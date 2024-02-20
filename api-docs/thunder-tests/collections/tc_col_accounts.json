@@ -1,0 +1,204 @@
+{
+    "_id": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+    "colName": "Accounts",
+    "created": "2023-05-05T16:04:00.595Z",
+    "sortNum": 10000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a0bdb360-3d28-41a1-9737-62f85748c57d",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Login With Otp",
+            "url": "{{API_URL}}/auth/login",
+            "method": "POST",
+            "sortNum": 22500,
+            "created": "2023-05-05T16:04:29.323Z",
+            "modified": "2024-02-20T07:11:28.305Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"method\": \"otp\",\n  \"credentials\": {\n    \"email\": \"yyugi64@gmail.com\"\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9c65327f-8f39-4595-a61b-44a35b95e3bd",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Refresh Token With Email",
+            "url": "{{API_URL}}/auth/refresh-token",
+            "method": "POST",
+            "sortNum": 28125,
+            "created": "2023-05-05T16:34:53.964Z",
+            "modified": "2023-11-09T23:45:02.028Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.accessToken",
+                    "action": "setto",
+                    "value": "{{accessToken}}"
+                },
+                {
+                    "type": "set-env-var",
+                    "custom": "json.refreshToken",
+                    "action": "setto",
+                    "value": "{{refreshToken}}"
+                }
+            ]
+        },
+        {
+            "_id": "f2aa3bfe-1514-4234-94b4-d45a77a249ec",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Register with email",
+            "url": "{{API_URL}}/auth/register",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-05-06T10:54:20.736Z",
+            "modified": "2024-02-20T07:10:52.188Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"yugi\",\n  \"email\": \"yyugi64@gmail.com\",\n  \"password\": \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "be79a20c-7530-400f-a08f-cc42b94a8aab",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Validate OTP",
+            "url": "{{API_URL}}/auth/validate-otp",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-08T20:26:53.748Z",
+            "modified": "2024-02-20T07:14:14.797Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"yyugi64@gmail.com\",\n  \"action\": \"login\",\n  \"code\": \"541415\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.accessToken",
+                    "action": "setto",
+                    "value": "{{accessToken}}"
+                },
+                {
+                    "type": "set-env-var",
+                    "custom": "json.refreshToken",
+                    "action": "setto",
+                    "value": "{{refreshToken}}"
+                }
+            ]
+        },
+        {
+            "_id": "6114f045-ce1f-42dc-8503-6c3785ddd2e5",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Resend OTP",
+            "url": "{{API_URL}}/auth/resend-otp",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-11-08T20:32:41.703Z",
+            "modified": "2024-02-20T07:13:16.153Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"yyugi64@gmail.com\",\n  \"action\": \"login\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "335cb452-553c-4267-bfaa-ca9db4f7c54d",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Forgot Password",
+            "url": "{{API_URL}}/auth/forgot-password",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-11-08T20:36:45.866Z",
+            "modified": "2023-11-08T20:37:29.246Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"yyugi64@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1c20155f-0ad8-4c60-a479-0fb6f75b093c",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Reset Password",
+            "url": "{{API_URL}}/auth/reset-password",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-11-08T20:40:04.228Z",
+            "modified": "2023-11-10T00:14:21.543Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\": \"321\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "35393d4f-f0cc-4f98-b7e8-bbb0db6e43ef",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Login With Password",
+            "url": "{{API_URL}}/auth/login",
+            "method": "POST",
+            "sortNum": 26250,
+            "created": "2023-11-09T23:16:18.808Z",
+            "modified": "2024-02-20T07:11:56.279Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"method\": \"password\",\n  \"credentials\": {\n    \"email\": \"yyugi64@gmail.com\",\n    \"password\": \"123\"\n  }\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.accessToken",
+                    "action": "setto",
+                    "value": "{{accessToken}}"
+                },
+                {
+                    "type": "set-env-var",
+                    "custom": "json.refreshToken",
+                    "action": "setto",
+                    "value": "{{refreshToken}}"
+                }
+            ]
+        }
+    ]
+}
