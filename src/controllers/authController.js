@@ -897,6 +897,7 @@ export class AuthController {
         message: "Email is required",
       });
     }
+
     if (!(await validateEmail(email))) {
       return res.json({
         success: false,
