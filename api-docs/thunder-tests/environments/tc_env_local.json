@@ -12,11 +12,11 @@
         },
         {
             "name": "accessToken",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJ5dWdpIiwiZW1haWwiOiJ5eXVnaTY0QGdtYWlsLmNvbSIsImlhdCI6MTcwODQxMzI1NiwiZXhwIjoxNzA4NDk5NjU2fQ.Y6TEnGgnN-VjMBlzGrgusdsvMzlJi2P5U0K7fCpalzE"
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJ5dWdpIiwiZW1haWwiOiJ5eXVnaTY0QGdtYWlsLmNvbSIsImlhdCI6MTcwODQzNzA2NSwiZXhwIjoxNzA4NTIzNDY1fQ.UM9qO32tmOBq5RjLRhWkIIGv_CO7qDKvSbDo2CHCQcU"
         },
         {
             "name": "refreshToken",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJ5dWdpIiwiZW1haWwiOiJ5eXVnaTY0QGdtYWlsLmNvbSIsImlhdCI6MTcwODQxMzI1NiwiZXhwIjoxNzExMDA1MjU2fQ.rbEx90yim7bdSFOrkuad47ArZOUNlK6dA0vAS9fgWa4"
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJ5dWdpIiwiZW1haWwiOiJ5eXVnaTY0QGdtYWlsLmNvbSIsImlhdCI6MTcwODQzNzA2NSwiZXhwIjoxNzExMDI5MDY1fQ.Wy0-fvjyL7U5aLfPlv2rvi5Ph7CPtkwOhpR70wk9rBM"
         }
     ]
 }

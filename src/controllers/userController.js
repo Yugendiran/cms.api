@@ -1,6 +1,3 @@
-// controllers/userController.js
-// import { promisePool as conn } from "../config/db.js";
-
 export class UserController {
   static getUsers(req, res) {
     conn
