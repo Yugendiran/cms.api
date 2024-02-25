@@ -349,6 +349,7 @@ export class AuthController {
                 userId: result[0].userId,
                 name: result[0].name,
                 email: result[0].email,
+                role: "user",
               });
 
               return res.json({
@@ -483,6 +484,7 @@ export class AuthController {
               userId: decodedToken.userId,
               name: decodedToken.name,
               email: decodedToken.email,
+              role: "user",
             });
 
           return res.json({
@@ -655,6 +657,7 @@ export class AuthController {
                   userId: user.userId,
                   name: user.name,
                   email: user.email,
+                  role: "user",
                 });
 
                 return res.json({
@@ -691,6 +694,7 @@ export class AuthController {
                   userId: user.userId,
                   name: user.name,
                   email: user.email,
+                  role: "user",
                 });
 
                 return res.json({
@@ -727,6 +731,7 @@ export class AuthController {
                   userId: user.userId,
                   name: user.name,
                   email: user.email,
+                  role: "user",
                 });
 
                 return res.json({
@@ -768,6 +773,7 @@ export class AuthController {
                   userId: user.userId,
                   name: user.name,
                   email: user.email,
+                  role: "user",
                 });
 
                 return res.json({

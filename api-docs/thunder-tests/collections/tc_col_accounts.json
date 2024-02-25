@@ -177,12 +177,12 @@
             "method": "POST",
             "sortNum": 26250,
             "created": "2023-11-09T23:16:18.808Z",
-            "modified": "2024-02-20T07:11:56.279Z",
+            "modified": "2024-02-25T15:42:40.234Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"method\": \"password\",\n  \"credentials\": {\n    \"email\": \"yyugi64@gmail.com\",\n    \"password\": \"123\"\n  }\n}",
+                "raw": "{\n  \"method\": \"password\",\n  \"credentials\": {\n    \"email\": \"yyugi64@gmail.com\",\n    \"password\": \"321\"\n  }\n}",
                 "form": []
             },
             "tests": [

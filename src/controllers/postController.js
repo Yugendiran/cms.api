@@ -1,0 +1,139 @@
+import conn from "../../config/db.js";
+import sqlString from "sqlstring";
+
+const queryAsync = async (query, values) => {
+  return await new Promise((resolve, reject) => {
+    conn.query(query, values, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+export class PostController {
+  static async getPosts(req, res) {
+    let { tagId, keyword, status, orderBy, sortBy } = req.query;
+    let offset = Number(req.query.offset);
+    let limit = Number(req.query.limit);
+    offset = offset * limit;
+
+    let whereQuery = " WHERE 1 = 1 ";
+
+    if (tagId) {
+      whereQuery += ` AND tagId = ${tagId} `;
+    }
+
+    if (keyword) {
+      whereQuery += ` AND title LIKE '%${keyword}%' `;
+    }
+
+    if (req.user.role == "user") {
+      whereQuery += ` AND status = 'published' `;
+    } else if (req.user.role == "admin") {
+      if (status) {
+        whereQuery += ` AND status = '${status}' `;
+      } else {
+        whereQuery += ` AND status != 'deleted' `;
+      }
+    }
+
+    let orderByQuery = "";
+
+    if (orderBy && sortBy) {
+      orderByQuery = ` ORDER BY ${orderBy} ${sortBy} `;
+    } else if (orderBy) {
+      orderByQuery = ` ORDER BY ${orderBy} ASC `;
+    } else if (sortBy) {
+      orderByQuery = ` ORDER BY createdAt ${sortBy} `;
+    } else {
+      orderByQuery = ` ORDER BY createdAt ASC `;
+    }
+
+    let query = sqlString.format(`SELECT * ,
+        (SELECT tagName FROM Tag WHERE tagId = Post.tagId) AS tagName,
+        (SELECT COUNT(*) FROM PostLike WHERE postId = Post.postId AND status = 'liked') AS totalLikes
+        ${
+          req.user.role == "user"
+            ? `, (SELECT COUNT(*) FROM PostLike WHERE postId = Post.postId AND userId = ${req.user.userId} AND status = 'liked' ORDER BY postLikeId DESC LIMIT 1) AS isLiked`
+            : ``
+        }
+      FROM Post ${whereQuery} ${orderByQuery}`);
+
+    if (!isNaN(offset) && !isNaN(limit) && offset >= 0 && limit >= 0) {
+      query += sqlString.format(` LIMIT ?, ?;`, [offset, limit]);
+    } else {
+      query += ";";
+    }
+
+    query += sqlString.format(
+      `SELECT COUNT(*) AS totalRecords FROM Post ${whereQuery}`
+    );
+
+    conn.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      let posts = results[0];
+
+      let pageMeta = {
+        totalRecords: results[1][0].totalRecords,
+      };
+
+      if (!isNaN(offset) && !isNaN(limit) && offset >= 0 && limit >= 0) {
+        pageMeta.noOfPages = Math.ceil(pageMeta.totalRecords / limit);
+      } else {
+        pageMeta.noOfPages = 1;
+      }
+
+      return res.json({
+        success: true,
+        posts,
+        pageMeta,
+      });
+    });
+  }
+
+  static async getPost(req, res) {
+    let postId = req.params.postId;
+
+    let query = sqlString.format(
+      `SELECT * ,
+        (SELECT tagName FROM Tag WHERE tagId = Post.tagId) AS tagName,
+      (SELECT COUNT(*) FROM PostLike WHERE postId = Post.postId AND status = 'liked') AS totalLikes
+      ${
+        req.user.role == "user"
+          ? `, (SELECT COUNT(*) FROM PostLike WHERE postId = Post.postId AND userId = ${req.user.userId} AND status = 'liked' ORDER BY postLikeId DESC LIMIT 1) AS isLiked`
+          : ``
+      }
+    FROM Post WHERE postId = ?;`,
+      [postId]
+    );
+
+    conn.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      let post = results[0];
+
+      return res.json({
+        success: true,
+        post,
+      });
+    });
+  }
+}

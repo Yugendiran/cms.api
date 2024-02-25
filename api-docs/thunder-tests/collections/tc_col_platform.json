@@ -1,0 +1,131 @@
+{
+    "_id": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+    "colName": "Platform",
+    "created": "2024-02-25T16:22:58.983Z",
+    "sortNum": 20000,
+    "folders": [
+        {
+            "_id": "58d77534-779f-4ddc-8cf8-714ee181b3b1",
+            "name": "Posts",
+            "containerId": "",
+            "created": "2024-02-25T20:21:33.331Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "2b757c66-8c1f-46a4-af99-f6da5e79f7c0",
+            "name": "Tags",
+            "containerId": "",
+            "created": "2024-02-25T20:21:45.941Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "c6bc113c-7e0b-4d9e-afbc-5fa0985c4c21",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "58d77534-779f-4ddc-8cf8-714ee181b3b1",
+            "name": "GET Posts",
+            "url": "{{API_URL}}/platform/posts",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-25T16:23:02.875Z",
+            "modified": "2024-02-25T19:54:24.523Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tagId",
+                    "value": "2",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "keyword",
+                    "value": "te",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "0",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "1",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "orderBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "sortBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c1b326d2-213b-4897-8dc4-bcb15629f6b4",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "58d77534-779f-4ddc-8cf8-714ee181b3b1",
+            "name": "GET Post",
+            "url": "{{API_URL}}/platform/posts/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-25T19:59:45.828Z",
+            "modified": "2024-02-25T20:00:03.780Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "cc1b4000-0cfc-45cc-86b5-90cd81397a3d",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "2b757c66-8c1f-46a4-af99-f6da5e79f7c0",
+            "name": "GET Tags",
+            "url": "{{API_URL}}/platform/tags?keyword&orderBy&sortBy",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-25T20:21:51.040Z",
+            "modified": "2024-02-25T20:23:02.930Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "keyword",
+                    "value": "",
+                    "isPath": false
+                },
+                {
+                    "name": "orderBy",
+                    "value": "",
+                    "isPath": false
+                },
+                {
+                    "name": "sortBy",
+                    "value": "",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        }
+    ]
+}
