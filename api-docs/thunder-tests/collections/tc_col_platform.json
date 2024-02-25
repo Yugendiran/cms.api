@@ -17,6 +17,13 @@
             "containerId": "",
             "created": "2024-02-25T20:21:45.941Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "cad2fa5e-d8d9-4fe8-84e6-20e6bee7d583",
+            "name": "Comments",
+            "containerId": "58d77534-779f-4ddc-8cf8-714ee181b3b1",
+            "created": "2024-02-25T20:49:35.584Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -29,7 +36,7 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-02-25T16:23:02.875Z",
-            "modified": "2024-02-25T19:54:24.523Z",
+            "modified": "2024-02-25T20:40:48.399Z",
             "headers": [],
             "params": [
                 {
@@ -58,13 +65,13 @@
                 },
                 {
                     "name": "orderBy",
-                    "value": "",
+                    "value": "totalLikes",
                     "isDisabled": true,
                     "isPath": false
                 },
                 {
                     "name": "sortBy",
-                    "value": "",
+                    "value": "DESC",
                     "isDisabled": true,
                     "isPath": false
                 }
@@ -121,6 +128,83 @@
                     "isPath": false
                 }
             ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "62f871d3-1952-4343-be45-9319f6564677",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "58d77534-779f-4ddc-8cf8-714ee181b3b1",
+            "name": "GET Popular Posts",
+            "url": "{{API_URL}}/platform/popular-posts",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-25T20:36:25.591Z",
+            "modified": "2024-02-25T20:36:55.093Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d7a43e0a-ce55-4ffe-8c5f-20aa3bb6a2ce",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "cad2fa5e-d8d9-4fe8-84e6-20e6bee7d583",
+            "name": "GET Commennts",
+            "url": "{{API_URL}}/platform/comments?postId=1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-25T20:49:42.186Z",
+            "modified": "2024-02-25T20:52:19.100Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "postId",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "orderBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "sortBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1c9df52a-ba41-453f-aa5a-74b9ee529198",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "cad2fa5e-d8d9-4fe8-84e6-20e6bee7d583",
+            "name": "Add comment",
+            "url": "{{API_URL}}/platform/comments",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-02-25T20:55:16.209Z",
+            "modified": "2024-02-25T20:56:02.605Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"postId\": 1,\n  \"comment\": \"asda\"\n}",
+                "form": []
+            },
             "auth": {
                 "type": "bearer",
                 "bearer": "{{accessToken}}"
