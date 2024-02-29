@@ -136,4 +136,74 @@ export class PostController {
       });
     });
   }
+
+  static async likePost(req, res) {
+    let userId = req.user.userId;
+    let postId = req.params.postId;
+
+    let query = sqlString.format(
+      `SELECT * FROM PostLike WHERE postId = ? AND userId = ?;`,
+      [postId, userId]
+    );
+
+    conn.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      let action = "";
+
+      if (results.length > 0) {
+        let postLikeId = results[0].postLikeId;
+        let status = results[0].status;
+
+        if (status == "liked") {
+          query = sqlString.format(
+            `UPDATE PostLike SET status = 'unliked' WHERE postLikeId = ?;`,
+            [postLikeId]
+          );
+
+          action = "unliked";
+        } else {
+          query = sqlString.format(
+            `UPDATE PostLike SET status = 'liked' WHERE postLikeId = ?;`,
+            [postLikeId]
+          );
+
+          action = "liked";
+        }
+      } else {
+        query = sqlString.format(`INSERT INTO PostLike SET ?;`, [
+          {
+            postId,
+            userId,
+            status: "liked",
+          },
+        ]);
+
+        action = "liked";
+      }
+
+      conn.query(query, (err, results) => {
+        if (err) {
+          console.log(err);
+
+          return res.json({
+            success: false,
+            message: "Something went wrong",
+          });
+        }
+
+        return res.json({
+          success: true,
+          message: "Post " + action,
+        });
+      });
+    });
+  }
 }

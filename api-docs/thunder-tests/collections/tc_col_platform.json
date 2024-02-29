@@ -210,6 +210,24 @@
                 "bearer": "{{accessToken}}"
             },
             "tests": []
+        },
+        {
+            "_id": "aa21975d-ae67-4b86-a294-27762f08e6e0",
+            "colId": "3d0add03-fd85-4473-bb12-1f54f6143e21",
+            "containerId": "58d77534-779f-4ddc-8cf8-714ee181b3b1",
+            "name": "Like post",
+            "url": "{{API_URL}}/platform/posts/1/like",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-29T12:25:03.577Z",
+            "modified": "2024-02-29T12:25:52.265Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
         }
     ]
 }

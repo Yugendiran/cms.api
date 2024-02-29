@@ -10,6 +10,7 @@ const router = express.Router();
 // Posts
 router.get("/posts", PostController.getPosts);
 router.get("/posts/:postId", PostController.getPost);
+router.post("/posts/:postId/like", PostController.likePost);
 
 // Comments
 router.get("/comments", CommentController.getComments);
