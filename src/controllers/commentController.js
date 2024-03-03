@@ -138,4 +138,44 @@ export class CommentController {
       });
     });
   }
+
+  static async updateComment(req, res) {
+    let commentId = req.params.commentId;
+    let { status } = req.body;
+
+    if (!commentId) {
+      return res.json({
+        success: false,
+        message: "commentId is required",
+      });
+    }
+
+    if (!status) {
+      return res.json({
+        success: false,
+        message: "status is required",
+      });
+    }
+
+    let query = sqlString.format(`UPDATE Comment SET ? WHERE commentId = ?;`, [
+      {
+        status,
+      },
+      commentId,
+    ]);
+
+    conn.query(query, (err, result) => {
+      if (err) {
+        return res.json({
+          success: false,
+          message: err.message,
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Comment updated successfully",
+      });
+    });
+  }
 }

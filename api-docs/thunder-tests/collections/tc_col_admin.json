@@ -17,6 +17,13 @@
             "containerId": "",
             "created": "2024-03-03T13:04:32.664Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "0e3477df-13b2-4bc7-9150-4739f6c2f4d0",
+            "name": "Comments",
+            "containerId": "",
+            "created": "2024-03-03T13:16:12.750Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -276,6 +283,66 @@
             "modified": "2024-03-03T13:13:24.203Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "bb33e750-bf53-41d2-bf94-cb539652ff49",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "0e3477df-13b2-4bc7-9150-4739f6c2f4d0",
+            "name": "GET Commennts",
+            "url": "{{API_URL}}/admin/comments",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-03T13:16:12.752Z",
+            "modified": "2024-03-03T13:17:33.955Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "postId",
+                    "value": "2",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "orderBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "sortBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "600fc5a5-992e-4c11-b814-2ce4f62670f3",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "0e3477df-13b2-4bc7-9150-4739f6c2f4d0",
+            "name": "Update Comment",
+            "url": "{{API_URL}}/admin/comment/1/update",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-03-03T13:19:02.564Z",
+            "modified": "2024-03-03T13:20:08.331Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"status\": \"pending\"\n}",
+                "form": []
+            },
             "auth": {
                 "type": "bearer",
                 "bearer": "{{accessToken}}"
