@@ -121,10 +121,10 @@
             "containerId": "3d148c50-8f08-4e07-924b-cfa04281bf0f",
             "name": "Update Post",
             "url": "{{API_URL}}/admin/post/4/update",
-            "method": "POST",
+            "method": "PUT",
             "sortNum": 40000,
             "created": "2024-03-03T12:58:36.958Z",
-            "modified": "2024-03-03T13:01:04.484Z",
+            "modified": "2024-03-03T13:01:37.788Z",
             "headers": [],
             "params": [],
             "body": {
@@ -132,6 +132,24 @@
                 "raw": "{\n  \"tagId\": 1,\n  \"title\": \"My title2\",\n  \"description\": \"2Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, voluptas sint impedit consectetur, iusto possimus quos, perspiciatis labore nisi ipsa voluptatibus\",\n  \"banner\": \"https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80\",\n  \"status\": \"published\"\n}",
                 "form": []
             },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "06b47180-47ed-47f5-85da-64774904e536",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "3d148c50-8f08-4e07-924b-cfa04281bf0f",
+            "name": "Delete Post",
+            "url": "{{API_URL}}/admin/post/4/delete",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-03-03T13:02:15.203Z",
+            "modified": "2024-03-03T13:02:36.508Z",
+            "headers": [],
+            "params": [],
             "auth": {
                 "type": "bearer",
                 "bearer": "{{accessToken}}"

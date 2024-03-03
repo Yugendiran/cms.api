@@ -288,4 +288,29 @@ export class PostController {
       });
     });
   }
+
+  static async deletePost(req, res) {
+    let postId = req.params.postId;
+
+    let query = sqlString.format(
+      `UPDATE Post SET status = 'deleted' WHERE postId = ?;`,
+      [postId]
+    );
+
+    conn.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Post deleted",
+      });
+    });
+  }
 }
