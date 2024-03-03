@@ -94,4 +94,117 @@ export class TagController {
       });
     });
   }
+
+  static async createTag(req, res) {
+    let { tagName } = req.body;
+
+    if (!tagName) {
+      return res.json({
+        success: false,
+        message: "Tag name is required",
+      });
+    }
+
+    let query = sqlString.format(`INSERT INTO Tag (tagName) VALUES (?)`, [
+      tagName,
+    ]);
+
+    conn.query(query, (err, result) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Tag created successfully",
+      });
+    });
+  }
+
+  static async updateTag(req, res) {
+    let tagId = req.params.tagId;
+    let { tagName, status } = req.body;
+
+    if (!tagId) {
+      return res.json({
+        success: false,
+        message: "Tag id is required",
+      });
+    }
+
+    if (!tagName && !status) {
+      return res.json({
+        success: false,
+        message: "Nothing to update",
+      });
+    }
+
+    let updateObj = {};
+
+    if (tagName) {
+      updateObj.tagName = tagName;
+    }
+
+    if (status) {
+      updateObj.status = status;
+    }
+
+    let query = sqlString.format(`UPDATE Tag SET ? WHERE tagId = ?`, [
+      updateObj,
+      tagId,
+    ]);
+
+    conn.query(query, (err, result) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Tag updated successfully",
+      });
+    });
+  }
+
+  static async deleteTag(req, res) {
+    let tagId = req.params.tagId;
+
+    if (!tagId) {
+      return res.json({
+        success: false,
+        message: "Tag id is required",
+      });
+    }
+
+    let query = sqlString.format(
+      `UPDATE Tag SET status = 'deleted' WHERE tagId = ?`,
+      [tagId]
+    );
+
+    conn.query(query, (err, result) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Tag deleted successfully",
+      });
+    });
+  }
 }

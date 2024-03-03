@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2024-03-03T12:33:57.831Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "e2ca1e55-e65f-4473-bc2b-18358e1e82da",
+            "name": "Tags",
+            "containerId": "",
+            "created": "2024-03-03T13:04:32.664Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -148,6 +155,125 @@
             "sortNum": 40000,
             "created": "2024-03-03T13:02:15.203Z",
             "modified": "2024-03-03T13:02:36.508Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "79905fc5-087b-4465-ad97-6d006842d57a",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "e2ca1e55-e65f-4473-bc2b-18358e1e82da",
+            "name": "Add tag",
+            "url": "{{API_URL}}/admin/tag/create",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-03-03T13:04:32.667Z",
+            "modified": "2024-03-03T13:08:07.808Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"tagName\": \"Res\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a814f274-5a1e-4190-b9a8-cee0bc3db5e7",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "e2ca1e55-e65f-4473-bc2b-18358e1e82da",
+            "name": "Update Tag",
+            "url": "{{API_URL}}/admin/tag/4/update",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-03-03T13:04:32.668Z",
+            "modified": "2024-03-03T13:10:15.256Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"tagName\": \"Res2\",\n  \"status\": \"published\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "be0bc791-5075-4cef-84d6-f08680d9ef59",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "e2ca1e55-e65f-4473-bc2b-18358e1e82da",
+            "name": "Delete Tag",
+            "url": "{{API_URL}}/admin/tag/4/delete",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-03-03T13:04:32.669Z",
+            "modified": "2024-03-03T13:11:15.146Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0cd05532-021a-4f0c-9ef1-fddfe6d39b2f",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "e2ca1e55-e65f-4473-bc2b-18358e1e82da",
+            "name": "GET Tags",
+            "url": "{{API_URL}}/platform/tags",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-03T13:06:33.239Z",
+            "modified": "2024-03-03T13:06:51.006Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "keyword",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "orderBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "sortBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8de09593-038b-49bf-9c4d-dfa686083fda",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "",
+            "name": "GET Users",
+            "url": "{{API_URL}}/admin/users",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-03T13:12:57.700Z",
+            "modified": "2024-03-03T13:13:24.203Z",
             "headers": [],
             "params": [],
             "auth": {
