@@ -1109,4 +1109,26 @@ export class AuthController {
       });
     });
   }
+
+  static async getAllUsers(req, res) {
+    let query = sqlString.format(
+      "SELECT userId, name, email, isVerified FROM User"
+    );
+
+    conn.query(query, (err, result) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        users: result,
+      });
+    });
+  }
 }
