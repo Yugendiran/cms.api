@@ -206,4 +206,86 @@ export class PostController {
       });
     });
   }
+
+  static async createPost(req, res) {
+    let { tagId, title, description, banner } = req.body;
+
+    if (!tagId || !title || !description || !banner) {
+      return res.json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    let query = sqlString.format(`INSERT INTO Post SET ?;`, {
+      tagId,
+      title,
+      description,
+      banner,
+    });
+
+    conn.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Post created",
+      });
+    });
+  }
+
+  static async updatePost(req, res) {
+    let postId = req.params.postId;
+    let { tagId, title, description, banner, status } = req.body;
+
+    let updateObj = {};
+
+    if (tagId) {
+      updateObj.tagId = tagId;
+    }
+
+    if (title) {
+      updateObj.title = title;
+    }
+
+    if (description) {
+      updateObj.description = description;
+    }
+
+    if (banner) {
+      updateObj.banner = banner;
+    }
+
+    if (status) {
+      updateObj.status = status;
+    }
+
+    let query = sqlString.format(`UPDATE Post SET ? WHERE postId = ?;`, [
+      updateObj,
+      postId,
+    ]);
+
+    conn.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Post updated",
+      });
+    });
+  }
 }
