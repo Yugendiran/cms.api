@@ -73,6 +73,24 @@
                 "bearer": "{{accessToken}}"
             },
             "tests": []
+        },
+        {
+            "_id": "8f616bef-bf3b-4ca4-9993-b89efa0bb997",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "3d148c50-8f08-4e07-924b-cfa04281bf0f",
+            "name": "GET Post Copy",
+            "url": "{{API_URL}}/admin/post/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-03T12:50:38.381Z",
+            "modified": "2024-03-03T12:51:04.922Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
         }
     ]
 }
