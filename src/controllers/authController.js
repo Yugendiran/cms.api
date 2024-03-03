@@ -413,6 +413,105 @@ export class AuthController {
     });
   }
 
+  static async adminLogin(req, res) {
+    const { email, password } = req.body;
+
+    if (!email) {
+      return res.json({
+        success: false,
+        message: "Email is required",
+      });
+    }
+
+    if (!password) {
+      return res.json({
+        success: false,
+        message: "Password is required",
+      });
+    }
+
+    let query = sqlString.format(
+      `SELECT * FROM User WHERE email = ? ORDER BY userId DESC LIMIT 1`,
+      [email]
+    );
+
+    conn.query(query, async (err, result) => {
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Error fetching user from the database",
+        });
+      }
+
+      if (result.length == 0) {
+        return res.json({
+          success: false,
+          message: "User not found",
+        });
+      }
+
+      let user = result[0];
+
+      let query = sqlString.format(
+        `SELECT COUNT(*) AS count FROM Admin WHERE userId = ? AND status = 'active';`,
+        [result[0].userId]
+      );
+
+      conn.query(query, async (err, result) => {
+        if (err) {
+          return res.json({
+            success: false,
+            message: "Error fetching admin from the database",
+          });
+        }
+
+        if (result[0].count == 0) {
+          return res.json({
+            success: false,
+            message: "User is not an admin",
+          });
+        }
+
+        bcrypt.compare(password, user.password, async (err, result2) => {
+          if (err) {
+            console.log(err);
+
+            return res.json({
+              success: false,
+              message: "Error comparing passwords",
+            });
+          }
+
+          if (result2) {
+            let { accessToken, accessTokenExp, refreshToken, refreshTokenExp } =
+              await generateToken("BOTH", {
+                userId: user.userId,
+                name: user.name,
+                email: user.email,
+                role: "admin",
+              });
+
+            return res.json({
+              success: true,
+              message: "User logged in successfully",
+              accessToken,
+              accessTokenExp,
+              refreshToken,
+              refreshTokenExp,
+            });
+          } else {
+            return res.json({
+              success: false,
+              message: "Incorrect password",
+            });
+          }
+        });
+      });
+    });
+  }
+
   static async refreshToken(req, res) {
     const refreshToken = req.body.refreshToken;
 

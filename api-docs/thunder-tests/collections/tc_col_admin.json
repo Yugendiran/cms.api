@@ -1,0 +1,78 @@
+{
+    "_id": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+    "colName": "Admin",
+    "created": "2024-03-03T12:33:43.050Z",
+    "sortNum": 30000,
+    "folders": [
+        {
+            "_id": "3d148c50-8f08-4e07-924b-cfa04281bf0f",
+            "name": "Post",
+            "containerId": "",
+            "created": "2024-03-03T12:33:57.831Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b13c916e-f268-4c33-8828-263e7589b278",
+            "colId": "c9a84aa2-58c7-4447-8107-88a2784fd4a5",
+            "containerId": "3d148c50-8f08-4e07-924b-cfa04281bf0f",
+            "name": "GET Post",
+            "url": "{{API_URL}}/admin/posts",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-03T12:34:02.547Z",
+            "modified": "2024-03-03T12:49:48.359Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tagId",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "keyword",
+                    "value": "Test2",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "status",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "orderBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "sortBy",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{accessToken}}"
+            },
+            "tests": []
+        }
+    ]
+}

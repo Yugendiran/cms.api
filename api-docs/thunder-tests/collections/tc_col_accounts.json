@@ -199,6 +199,38 @@
                     "value": "{{refreshToken}}"
                 }
             ]
+        },
+        {
+            "_id": "449a766b-e291-44df-9854-af0e93ec83a7",
+            "colId": "32a30dca-3b6c-4c2a-90e2-761c23788d9c",
+            "containerId": "",
+            "name": "Admin Login",
+            "url": "{{API_URL}}/auth/admin-login",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-03-03T12:37:34.735Z",
+            "modified": "2024-03-03T12:46:43.613Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"yyugi64@gmail.com\",\n  \"password\": \"321\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.accessToken",
+                    "action": "setto",
+                    "value": "{{accessToken}}"
+                },
+                {
+                    "type": "set-env-var",
+                    "custom": "json.refreshToken",
+                    "action": "setto",
+                    "value": "{{refreshToken}}"
+                }
+            ]
         }
     ]
 }
